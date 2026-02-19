@@ -1,0 +1,58 @@
+{
+  "name": "@shadng/sng-mcp",
+  "version": "1.0.2",
+  "description": "MCP server for ShadNG UI and Icons",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/server.js",
+  "bin": {
+    "sng-mcp": "dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alimjanablikim/sng-mcp.git"
+  },
+  "homepage": "https://shadng.js.org/docs/mcp",
+  "bugs": {
+    "url": "https://github.com/alimjanablikim/sng-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "angular",
+    "shadng",
+    "ai",
+    "ui"
+  ],
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "build-data": "node scripts/build-data.mjs",
+    "build": "npm run build-data && npx tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "prepack": "npm run build",
+    "start": "node dist/server.js",
+    "test": "npm run build-data && npx vitest run --config vitest.config.ts",
+    "smoke": "npm run build && node tests/stdio-smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.2",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.8"
+  },
+  "files": [
+    "dist/",
+    "data/",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
